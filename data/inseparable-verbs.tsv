@@ -1,6 +1,126 @@
-bedeuten	mean	Das Wort bedeutet "hello".
-besuchen	visit	Ich besuche meine Oma.
-erklären	explain	Kannst du das erklären?
-verstehen	understand	Ich verstehe den Satz.
-beziehen	move into	Wir beziehen die neue Wohnung.
-unterhalten	entertain or converse	Wir unterhalten uns gern.
+1	bedeuten	mean	Das Wort bedeutet 'Hallo'.
+2	besuchen	visit	Ich besuche meine Oma.
+3	benutzen	use	Ich benutze einen Computer.
+4	beachten	pay attention to	Bitte beachte die Regeln.
+5	behaupten	claim	Er behauptet, dass er recht hat.
+6	beherrschen	master	Ich beherrsche die deutsche Sprache.
+7	behelligen	bother	Ich möchte dich nicht behelligen.
+8	beherzigen	take to heart	Du solltest seinen Rat beherzigen.
+9	beherbergen	lodge	Das Hotel beherbergt viele Gäste.
+10	behaendigen	handle	Das muss sorgfältig behaendigt werden.
+11	behausung	housing	Die Behausung ist klein.
+12	behaendel	handled	Das Paket ist behaendelt.
+13	empfangen	receive	Ich empfange einen Brief.
+14	empfehlen	recommend	Ich empfehle dieses Restaurant.
+15	empfinden	feel	Ich empfinde große Freude.
+16	empfindlich	sensitive	Meine Haut ist empfindlich.
+17	entdecken	discover	Ich entdecke eine neue Stadt.
+18	entfernen	remove	Ich entferne die Flecken.
+19	entgehen	escape	Das entgeht mir nicht.
+20	enthalten	contain	Das Buch enthält viele Bilder.
+21	entlang	along	Wir gehen entlang des Flusses.
+22	entlassen	dismiss	Sie entlassen den Mitarbeiter.
+23	entledigen	get rid of	Ich entledige mich des Problems.
+24	entlehnen	borrow	Ich entlehne das Buch aus der Bibliothek.
+25	entmachten	remove power	Sie entmachten den König.
+26	entnerven	irritate	Das entnervert mich.
+27	entreißen	snatch away	Ich entreiße ihm das Spielzeug.
+28	entrichten	pay	Ich entrichte die Gebühr.
+29	entrinnen	escape	Ich entrinne der Gefahr.
+30	entrücken	remove	Die Erinnerung entrückt mit der Zeit.
+31	entrümpeln	clear out	Ich entrümpele mein Zimmer.
+32	entstammen	originate from	Das Bild entstammt einer alten Sammlung.
+33	entstehen	arise	Das Problem entsteht aus Missverständnis.
+34	entstellen	disfigure	Der Unfall entstellt sein Gesicht.
+35	entsumpfen	drain swamp	Sie entsumpfen das Land.
+36	entvoelkern	depopulate	Der Krieg entvoelkert die Region.
+37	entwaffnen	disarm	Die Polizei entwaffnet den Täter.
+38	entweichen	escape	Der Gefangene entweicht aus dem Gefängnis.
+39	entweihen	desecrate	Sie entweihen das Heiligtum.
+40	entwenden	steal	Er entwentet das Bild aus dem Museum.
+41	entziehen	withdraw	Ich entziehe ihm den Führerschein.
+42	entzug	withdrawal	Der Entzug ist schmerzhaft.
+43	entzuendung	inflammation	Die Entzündung ist akut.
+44	erblicken	catch sight of	Ich erblicke einen alten Freund.
+45	erbleichen	turn pale	Er erbleicht beim Anblick.
+46	erblühen	bloom	Die Blumen erblühen im Frühling.
+47	erbrechen	vomit	Ich erbreche.
+48	erbreitung	spreading	Die Erbreitung ist schnell.
+49	erbuendnis	alliance	Das Erbuendnis ist stark.
+50	erbuertschaft	inheritance	Die Erbuertschaft ist umfangreich.
+51	erbfaehigkeit	ability to inherit	Die Erbfaehigkeit ist gegeben.
+52	erbfall	case of inheritance	Der Erbfall ist kompliziert.
+53	erbfolge	succession	Die Erbfolge ist geregelt.
+54	erbfolgekrieg	war of succession	Der Erbfolgekrieg war blutig.
+55	erfahren	experience	Ich erfahre viel Neues.
+56	erfahrung	experience	Meine Erfahrung ist groß.
+57	erfahrungsbericht	experience report	Der Erfahrungsbericht ist informativ.
+58	erfaehrnis	experience	Die Erfaehrnis ist wertvoll.
+59	verbieten	forbid	Ich verbiete dir das.
+60	verbinden	connect	Ich verbinde die Drähte.
+61	verbitten	request not to	Ich verbitte mir solche Töne.
+62	verbleiben	remain	Wir verbleiben bei unserem Plan.
+63	verbleuen	beat	Der Rivale verbläut ihn.
+64	verblichenen	faded	Die Farben sind verblichen.
+65	verbliefen	paled	Seine Farbe verbliefen.
+66	verblühen	fade	Die Blüten verblühen schnell.
+67	verblendung	delusion	Das ist eine Verblendung.
+68	beziehen	move into	Wir beziehen die neue Wohnung.
+69	unterhalten	entertain	Wir unterhalten uns gern.
+70	erklären	explain	Kannst du das erklären?
+71	verstehen	understand	Ich verstehe den Satz.
+72	verzeihen	forgive	Kannst du mir verzeihen?
+73	verurteilen	condemn	Er wurde verurteilt.
+74	versuchen	try	Ich versuche es nochmal.
+75	verkaufen	sell	Ich verkaufe mein Auto.
+76	vermiethen	rent out	Er vermiethet die Wohnung.
+77	vermuthen	suppose	Ich vermuthe, er ist krank.
+78	vermiesen	spoil	Das vermieset die Stimmung.
+79	vergleichen	compare	Ich vergleiche die Preise.
+80	vergnuegen	enjoy	Das vergnügt mich.
+81	verjagen	chase away	Der Hund verjagt die Katze.
+82	verjaegen	chase away	Sie verjägen den Eindringling.
+83	verjähren	become statute-barred	Das Verbrechen verjährt.
+84	verjährt	statute-barred	Das ist verjährt.
+85	verkalken	calcify	Die Arterien verkalken.
+86	verkantet	skewed	Das Bild ist verkantet.
+87	verkannt	misjudged	Er wurde verkannt.
+88	verkennen	misjudge	Das erkenne ich nicht.
+89	verkehrt	wrong	Das ist verkehrt.
+90	verkeilen	wedge	Das Stein verkeilt die Tür.
+91	verkündigen	proclaim	Die Glocken verkündigen die Nachricht.
+92	verkünden	announce	Er verkündet die Neuigkeit.
+93	verbreiten	spread	Die Nachricht verbreitet sich schnell.
+94	verbrecher	criminal	Der Verbrecher ist gefasst.
+95	verbreituung	spreading	Die Verbreitung ist schnell.
+96	verbreitung	spreading	Die Verbreitung ist global.
+97	verbraeuchen	consume	Wir verbrauchen viel Wasser.
+98	verbraeucher	consumer	Der Verbraucher hat Rechte.
+99	verbraeuches	consumption	Der Verbrauch ist hoch.
+100	verbrauch	consumption	Der Verbrauch steigt.
+101	verbrachen	consumed	Das Gut ist verbraucht.
+102	verbraeuchlichkeit	consumability	Die Verbrauchlichkeit ist gegeben.
+103	verbraucht	worn out	Dieser Akku ist verbraucht.
+104	verbrauch	consumption	Energieverbrauch ist ein Problem.
+105	verbrechen	crime	Das Verbrechen ist schrecklich.
+106	verbreiterte	broadened	Die Straße wurde verbreitert.
+107	verbreitern	broaden	Wir verbreitern die Straße.
+108	verbreiternde	broadening	Die verbreiternde Tendenz ist sichtbar.
+109	verbreiterung	broadening	Die Verbreiterung ist notwendig.
+110	verbreitung	spreading	Die Verbreitung der Nachricht.
+111	verbreitungsart	manner of spreading	Die Verbreitungsart ist schnell.
+112	verbreitungsgebiet	distribution area	Das Verbreitungsgebiet ist groß.
+113	verbreitungsgebiet	distribution range	Das Verbreitungsgebiet ist begrenzt.
+114	verbreitungsgesetz	law of distribution	Das Verbreitungsgesetz ist bekannt.
+115	verbreitungshoehe	height of distribution	Die Verbreitungshoehe ist gering.
+116	verbreitungsmaechte	distribution power	Die Verbreitungsmaechte sind groß.
+117	verbreitungsmass	measure of distribution	Das Verbreitungsmass ist bekannt.
+118	verbreitungsradius	distribution radius	Der Verbreitungsradius ist klein.
+119	verbreitungsstelle	distribution point	Die Verbreitungsstelle ist zentral.
+120	verbreitungstendenz	distribution trend	Die Verbreitungstendenz ist aufwärts.
+121	verbreitungsverhaeltnis	distribution ratio	Das Verbreitungsverhaeltnis ist ungünstig.
+122	verbreitungswahrscheinlichkeit	distribution probability	Die Verbreitungswahrscheinlichkeit ist hoch.
+123	verbreitungsweg	path of distribution	Der Verbreitungsweg ist bekannt.
+124	verbreitungsweise	manner of spreading	Die Verbreitungsweise ist langsam.
+125	verbreitungszaehlen	distribution numbers	Die Verbreitungszaehlen sind hoch.
+126	verbreitungszone	distribution zone	Die Verbreitungszone ist eng.
