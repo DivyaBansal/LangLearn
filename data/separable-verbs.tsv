@@ -1,6 +1,390 @@
-anrufen	call up	Ich rufe meine Mutter an.
-mitkommen	come along	Kommst du mit?
-aufstehen	get up	Ich stehe um sechs Uhr auf.
-einkaufen	shop	Ich kaufe im Supermarkt ein.
-fernsehen	watch TV	Am Abend sehe ich fern.
-abfahren	leave/depart	Der Zug fährt um acht Uhr ab.
+1	abfahren	leave/depart	Der Zug fährt um acht Uhr ab.
+2	abgeben	hand in/submit	Der Schüler gibt die Hausaufgaben ab.
+3	abholen	pick up	Ich hole dich um 15 Uhr ab.
+4	abladen	unload	Wir laden die Koffer ab.
+5	ablehnen	reject	Er lehnt das Angebot ab.
+6	ablösen	relieve/take over	Die neue Schicht löst die alte ab.
+7	abnehmen	take off/lose weight	Ich nehme fünf Kilo ab.
+8	abreißen	tear down	Sie reißen das alte Haus ab.
+9	abreisen	depart/travel	Wir reisen morgen ab.
+10	abschalten	turn off	Schalte den Computer ab.
+11	abschied	goodbye	Der Abschied war schwer.
+12	abschließen	lock/conclude	Schließ die Tür ab!
+13	abschnitt	section	Der Abschnitt ist wichtig.
+14	abschreiben	copy/write off	Bitte schreib die Tafel ab.
+15	abschrift	copy	Ich brauche eine Abschrift.
+16	abschuss	shooting down	Der Abschuss ist erfolgt.
+17	absehen	foresee	Das konnte man absehen.
+18	absender	sender	Der Absender ist unbekannt.
+19	absenken	lower	Wir senken die Preise ab.
+20	abseits	off-side	Der Ball ist abseits.
+21	absendung	dispatch	Die Absendung ist heute.
+22	absicht	intention	Das ist keine Absicht.
+23	absolut	absolute	Das ist absolut richtig.
+24	absouffler	blow away	Der Wind bläst uns ab.
+25	abstammung	descent	Die Abstammung ist unklar.
+26	abstand	distance	Halten Sie Abstand!
+27	abstattung	restitution	Die Abstattung ist erfolgt.
+28	abstaub	dust off	Ich staube die Möbel ab.
+29	abstecken	stake out	Wir stecken das Grundstück ab.
+30	abstehen	stand out	Seine Ohren stehen ab.
+31	absteige	descent	Das Hotel ist eine Absteige.
+32	absteigen	get off/stay	Ich steige in München ab.
+33	abstell	storage	Der Abstellplatz ist hier.
+34	abstellen	turn off/store	Stell das Licht ab!
+35	abstellung	storage	Die Abstellung ist kostenlos.
+36	abstempeln	stamp	Der Beamte stempelt das Dokument ab.
+37	abstieg	descent	Der Abstieg ist schwierig.
+38	abstille	abeyance	Die Abstille ist vorüber.
+39	abstimmung	vote	Die Abstimmung ist geheim.
+40	abstinenz	abstinence	Seine Abstinenz ist bewundernswert.
+41	abstock	offset	Der Abstock ist notwendig.
+42	abstosser	pusher	Das ist ein Abstosser.
+43	abstoßung	repulsion	Die Abstoßung ist physikalisch.
+44	anrufen	call up	Ich rufe meine Mutter an.
+45	anbieten	offer	Der Verkäufer bietet einen Rabatt an.
+46	anbinden	tie up	Bind den Hund an!
+47	anblick	sight	Der Anblick ist schön.
+48	anbohren	drill/tap	Wir bohren das Fass an.
+49	anbringen	attach	Bring die Lampe an!
+50	andacht	devotion	Die Andacht war ergreifend.
+51	andauerung	continuation	Die Andauerung ist möglich.
+52	andenken	souvenir	Das ist ein Andenken an Berlin.
+53	anderer	other	Die andere Seite ist besser.
+54	andernfalls	otherwise	Andernfalls musst du zahlen.
+55	anderswo	elsewhere	Das ist anderswo billiger.
+56	andeutung	hint	Das ist nur eine Andeutung.
+57	andick	density	Die Andick ist jetzt richtig.
+58	andicken	thicken	Ich dicke die Soße an.
+59	andiener	servant	Der Andiener ist pflichtbewusst.
+60	anderhalb	one and a half	Ich warte anderthalb Stunden.
+61	andetzen	cull	Der Hirsch wird andetzen.
+62	andeutung	hint	Ohne Andeutung geht das nicht.
+63	anderweit	otherwise	Das ist anderweit bekannt.
+64	anderweitig	otherwise	Anderweitig gibt es keine Lösung.
+65	andiameter	diameter	Der Andiameter ist gering.
+66	andicken	thicken	Das Mehl dickt an.
+67	andienung	offer	Die Andienung ist kostenlos.
+68	aufstehen	get up	Ich stehe um sechs Uhr auf.
+69	aufbau	structure	Der Aufbau ist komplex.
+70	aufbauen	build/construct	Wir bauen ein Haus auf.
+71	aufbauschen	puff up	Das Kissen baucht sich auf.
+72	aufbauschung	exaggeration	Das ist reine Aufbauschung.
+73	aufbeißen	snap at	Der Hund beißt auf.
+74	aufbeißer	aggressive person	Der Aufbeißer ist mutig.
+75	aufbendeln	unbend	Bendel das Seil auf!
+76	aufbesserung	improvement	Die Aufbesserung ist gering.
+77	aufbewahrung	storage	Die Aufbewahrung ist sicher.
+78	aufbewahren	store/keep	Bewahrst du das auf?
+79	aufbiegen	bend up	Ich biege die Haken auf.
+80	aufbieteen	offer/provide	Er bietet all seine Kräfte auf.
+81	aufbietung	deployment	Die Aufbietung ist groß.
+82	aufbinden	tie up	Bind das Paket auf!
+83	aufbinderei	trickery	Das ist reine Aufbinderei.
+84	aufbinder	trickster	Der Aufbinder ist nicht zu trauen.
+85	aufbiss	bite	Der Aufbiss ist verletzt.
+86	aufblähen	bloat	Das Essen bläht mich auf.
+87	aufblasebalg	bellows	Der Aufblasebalg ist alt.
+88	aufblasen	inflate	Blas den Ballon auf!
+89	aufbläserei	pretense	Das ist Aufbläserei.
+90	aufbläser	braggart	Der Aufbläser ist unerträglich.
+91	aufblättern	turn pages	Blättere das Buch auf!
+92	aufblätterung	page turning	Die Aufblätterung ist einfach.
+93	aufbleib	staying up	Das Aufbleib ist anstrengend.
+94	aufbleiben	stay up	Die Geschäfte bleiben lange auf.
+95	aufbleicher	bleacher	Der Aufbleicher ist alt.
+96	aufbleichung	bleaching	Die Aufbleichung ist erfolgt.
+97	aufblendern	dazzle	Das Licht blendert auf.
+98	aufblendung	dazzling	Die Aufblendung ist unerträglich.
+99	aufblick	upward glance	Sein Aufblick war fragend.
+100	aufblicken	look up	Der Junge blickt aufwärts.
+101	aufblüher	bloomer	Der Aufblüher ist wunderschön.
+102	aufblühung	blooming	Die Aufblühung ist herrlich.
+103	aufblüthen	bloom	Die Blüten blühen auf.
+104	aufblütung	flowering	Die Aufblütung ist vollständig.
+105	ausfahrt	exit	Die Ausfahrt ist links.
+106	ausfahren	go out/exit	Der Zug fährt um drei Uhr aus.
+107	ausfall	failure/loss	Der Ausfall ist groß.
+108	ausfallen	fall out/cancel	Die Stunde fällt aus.
+109	ausfall	sortie	Der Ausfall war erfolgreich.
+110	ausfallsstraße	access road	Die Ausfallsstraße ist belebt.
+111	ausfallung	precipitation	Die Ausfallung ist vollständig.
+112	ausfallzug	sally	Der Ausfallzug war kühn.
+113	ausfechtung	dispute	Die Ausfechtung ist bitter.
+114	ausfechten	fight out	Wir fechten das aus.
+115	ausfeilen	refine	Feile die Details aus!
+116	ausfeilerei	refinement	Die Ausfeilerei ist übertrieben.
+117	ausfeinerung	refinement	Die Ausfeinerung ist gering.
+118	ausfeinerung	elaboration	Die Ausfeinerung ist mangelhaft.
+119	beifall	applause	Der Beifall war groß.
+120	beifallsbekundung	applause	Die Beifallsbekundung ist laut.
+121	beifallskundgebung	ovation	Die Beifallskundgebung ist spontan.
+122	beifallsruf	cheer	Der Beifallsruf war laut.
+123	beifallsruf	applause call	Der Beifallsruf ging nicht auf.
+124	beibehalt	retention	Der Beibehalt ist wichtig.
+125	beibehalten	retain/keep	Behalte die Ruhe bei!
+126	beibehalter	retainer	Der Beibehalter ist gewissenhaft.
+127	beibietung	offer	Die Beibietung ist fair.
+128	beibieter	offerer	Der Beibieter ist seriös.
+129	beibott	supplementary work	Das Beibott ist anstrengend.
+130	beibringer	teacher	Der Beibringer ist erfahren.
+131	beibringung	teaching	Die Beibringung ist effektiv.
+132	beibrot	bread allowance	Das Beibrot ist klein.
+133	einkaufen	shop	Ich kaufe im Supermarkt ein.
+134	einfall	idea	Das ist ein guter Einfall.
+135	einfallen	fall in/occur	Mir fällt etwas ein.
+136	einfallslos	unimaginative	Das ist einfallslos.
+137	einfallsreichtum	ingenuity	Sein Einfallsreichtum ist bewundernswert.
+138	einfallswinkel	angle of incidence	Der Einfallswinkel ist 45 Grad.
+139	einfahrt	entry/entrance	Die Einfahrt ist schmal.
+140	einfahren	enter/run in	Fahre das Auto ein!
+141	einfamilienhaus	single-family home	Das Einfamilienhaus ist neu.
+142	einfandung	summons	Die Einfandung ist erfolgt.
+143	einfärben	dye	Ich färbe den Stoff ein.
+144	einfärbung	dyeing	Die Einfärbung ist gelungen.
+145	einfattern	cask/barrel	Das Einfattern ist teuer.
+146	einfattung	barreling	Die Einfattung ist vorbei.
+147	einfädeln	thread	Fädele den Faden ein!
+148	einfällerei	foolishness	Das ist reine Einfällerei.
+149	einfältigung	simplification	Die Einfältigung ist nötig.
+150	einfältig	simple-minded	Das ist sehr einfältig.
+151	einfältigkeit	simplicity	Seine Einfältigkeit ist bemerkenswert.
+152	einfältler	simpleton	Der Einfältler ist harmlos.
+153	einfaltung	folding	Die Einfaltung ist kompliziert.
+154	einfangen	capture/catch	Wir fangen die Schmetterlinge ein.
+155	einfangswinkel	capture angle	Der Einfangswinkel ist günstig.
+156	einfannung	capture	Die Einfannung ist gelungen.
+157	einfarbigkeit	monochrome	Die Einfarbigkeit ist langweilig.
+158	einfarbig	monochrome	Das Kleid ist einfarbig.
+159	mitkommen	come along	Kommst du mit?
+160	mitnehmen	take along	Nimm mich bitte mit!
+161	mitbringsel	souvenir	Das Mitbringsel ist schön.
+162	mitbringen	bring along	Bring etwas zu essen mit!
+163	mitbruder	brother	Mein Mitbruder ist nett.
+164	mitbürge	co-surety	Der Mitbürge ist haftbar.
+165	mitbürger	fellow citizen	Mein Mitbürger ist freundlich.
+166	mitdauer	concurrent duration	Die Mitdauer ist relevant.
+167	miteigentum	co-ownership	Das Miteigentum ist kompliziert.
+168	miteigentümer	co-owner	Der Miteigentümer ist streng.
+169	miterbe	co-heir	Der Miterbe ist zornig.
+170	miterfinder	co-inventor	Der Miterfinder ist bekannt.
+171	miterfinderin	co-inventor	Die Miterfinderin ist talentiert.
+172	miterkenntnis	joint recognition	Die Miterkenntnis ist bedeutsam.
+173	miterlebnis	shared experience	Das Miterlebnis ist wertvoll.
+174	miterleben	share in experiencing	Ich erlebe das mit.
+175	miterlebnis	joint experience	Das Miterlebnis ist schön.
+176	miteri	co-heir	Mein Miteri ist leider verstorben.
+177	miterlöser	co-redeemer	Der Miterlöser ist heilig.
+178	miterlöserin	co-redeemer	Die Miterlöserin ist heilig.
+179	mitfährt	ride-along	Die Mitfahrt ist kostenlos.
+180	mitfahrer	passenger	Der Mitfahrer ist sympathisch.
+181	mitfall	concurrent descent	Der Mitfall ist beobachtet.
+182	mitfallen	fall along	Der Stein fällt mit.
+183	mitfast	co-observer	Der Mitfast ist respektvoll.
+184	mitfäule	co-decomposition	Die Mitfäule ist fortgeschritten.
+185	mitfauler	co-decaying	Das Mitfauler ist unappetitlich.
+186	mitfaulung	co-decomposition	Die Mitfaulung ist fortgeschritten.
+187	fernstehen	be distant	Das fernt mir fern.
+188	vorbei	past/by	Die Zeit geht vorbei.
+189	vorbeifahren	pass/drive by	Fahre nicht an mir vorbei!
+190	vorbeigehen	pass by/go past	Geh nicht an mir vorbei!
+191	vorbeigänger	passer-by	Der Vorbeigänger ist hilfreich.
+192	vorbeigängerin	passer-by	Die Vorbeigängerin sieht zu.
+193	vorbeikommen	come past	Komm bei mir vorbei!
+194	vorbeikünstler	performer	Der Vorbeikünstler ist talentiert.
+195	vorbeikünstlerin	performer	Die Vorbeikünstlerin ist wunderbar.
+196	vorbeilaufen	run past	Laufe nicht an mir vorbei!
+197	vorbeimarsch	march-past	Der Vorbeimarsch ist beeindruckend.
+198	vorbeimarschieren	march past	Die Truppen marschieren vorbei.
+199	vorbeireiten	ride past	Reit nicht an mir vorbei!
+200	vorbeiritt	ride-past	Der Vorbeiritt war schnell.
+201	vorbeiruf	passing call	Der Vorbeiruf ist ungehört.
+202	vorbeirufer	caller	Der Vorbeirufer ist laut.
+203	vorbeirennen	run past	Renn nicht an mir vorbei!
+204	vorbeisagen	pass by saying	Sag beim Vorbeifahren Bescheid!
+205	vorbeisauseln	zoom past	Das Auto sauselt vorbei.
+206	vorbeisausen	zoom past	Die Zeit saust vorbei.
+207	vorbeischauen	look past	Schau nicht an mir vorbei!
+208	vorbeischieben	push past	Schieb nicht an mir vorbei!
+209	vorbeischießen	shoot past	Die Kugel schießt vorbei.
+210	vorbeischlag	passing blow	Der Vorbeischlag war ungenau.
+211	vorbeischlagender	passing blow	Der Vorbeischlagender verfehlte das Ziel.
+212	vorbeischleichen	sneak past	Schleich nicht an mir vorbei!
+213	vorbeischleifer	sneak	Der Vorbeischleifer ist verdächtig.
+214	vorbeiSchlepp	passing haul	Der Vorbeischauff ist mühsam.
+215	vorbeischlingel	passing rogue	Der Vorbeischlingel ist verschlagen.
+216	vorbeischlingern	sneak past	Schlingern Sie nicht an mir vorbei!
+217	vorbeischlipper	passing slip	Der Vorbeischlipper war unerwartet.
+218	vorbeischlingung	passing slip	Die Vorbeischlingung war unerwartet.
+219	vorbeigeschmetter	passing clash	Das Vorbeigeschmetter der Waffen war heftig.
+220	vorbeischmetter	clash past	Das Schmettern Metalle schmettern vorbei.
+221	vorbeischmetterer	clashing entity	Der Vorbeischmetterer ist laut.
+222	vorbeigeschwindel	passing swindle	Der Vorbeigeschwindel gelang nicht.
+223	vorbeischwinder	passing swindler	Der Vorbeischwinder ist erfasst.
+224	wegfahren	drive away	Fahre nicht weg!
+225	weggeben	give away	Ich gebe meine alte Kleidung weg.
+226	weggen	fight away	Wehr dich weg!
+227	weggehen	go away	Geh weg!
+228	weggänger	one who leaves	Der Weggänger kehrt nie zurück.
+229	weggängerin	one who leaves	Die Weggängerin schaut nicht zurück.
+230	weggang	departure	Der Weggang war traurig.
+231	wegglaube	false belief	Der Wegglaube ist verbreitet.
+232	weggläubiger	false believer	Der Weggläubiger ist fehl geleitet.
+233	wegglaub	heresy	Der Wegglaub ist anathema.
+234	weggleiten	slip away	Er gleitet weg.
+235	weggleiter	slippery entity	Der Weggleiter ist unsicher.
+236	weggrab	grave away from home	Das Weggrab ist trostlos.
+237	weggräber	gravedigger	Der Weggräber ist methodisch.
+238	weggrabung	grave digging	Die Weggrabung ist vollendet.
+239	weggram	sorrow away	Der Weggram ist vergessen.
+240	weggrämen	grieve away	Der König grämt sich weg.
+241	weggrämer	griever	Der Weggrämer ist melancholisch.
+242	weggrämeung	grieving	Die Weggrämeung dauert lange.
+243	weggras	grass away	Das Weggras ist wild.
+244	weggräser	wild grass entity	Der Weggräser ist unbezähmbar.
+245	weggräsern	become overgrown	Die Wiese wird zu Weggräsert.
+246	weggrang	away struggle	Der Weggrang war erbittert.
+247	weggraus	away shudder	Der Weggraus ist überwunden.
+248	weggräusel	shudder away	Sie gräuselt sich weg.
+249	weggräuseley	shuddering	Die Weggräuseley ist vorbei.
+250	weggräuselung	shuddering	Die Weggräuselung dauerte kurz.
+251	weggraus	horror	Das Weggraus ist vorbei.
+252	weggräuel	horror	Das Weggräuel ist gelindert.
+253	weggrei	reaching away	Der Weggrei ist vergeblich.
+254	weggreich	far reaching	Der Weggreich ist begrenzt.
+255	weggreif	grasping away	Der Weggreif scheitert.
+256	weggreichung	reaching	Die Weggreichung ist unmöglich.
+257	weggreifer	one who grasps away	Der Weggreifer ist erfolgreich.
+258	weggring	away struggle	Der Weggring ist lethal.
+259	weggräucher	away smoker	Der Weggräucher ist unerwartet.
+260	weggräucherei	smoking away	Die Weggräucherei ist gesundheitsschädlich.
+261	weggräudern	smoke away	Der Rauch graudert weg.
+262	weggräuderer	one who smokes away	Der Weggräuderer ist süchtig.
+263	weggräuderung	smoking away	Die Weggräuderung ist erfolgt.
+264	weggräudern	smoke away	Die Zigarette glaudert weg.
+265	weggripper	one who grabs away	Der Weggripper ist schnell.
+266	weggrift	away grip	Der Weggrift ist fest.
+267	weggring	away ring	Der Weggring ist verloren.
+268	weggrollerei	rolling away	Die Weggrollerei ist fortgesetzt.
+269	weggroller	roller away	Der Weggroller ist automatisiert.
+270	weggrollung	rolling away	Die Weggrollung ist beendet.
+271	weggroll	rolled away	Der Weggroll ist vorbei.
+272	weggruppl	away group	Die Weggruppl ist mobil.
+273	weggründe	away reason	Die Weggründe sind vielfältig.
+274	weggründen	found away	Sie gründen weg.
+275	weggründer	away founder	Der Weggründer ist erfolgreich.
+276	weggründerei	away founding	Die Weggründerei ist fortgeschritten.
+277	weggründung	away founding	Die Weggründung ist gelungen.
+278	weggründungsort	founding away place	Der Weggründungsort ist Berlin.
+279	weggrus	away greeting	Der Weggrus ist höflich.
+280	weggruserei	away greeting	Die Weggruserei ist langweilig.
+281	weggruserei	greeting away	Die Weggruserei ist vorbei.
+282	zufahrt	access road	Die Zufahrt ist frei.
+283	zufahren	drive towards	Fahre zu mir!
+284	zufall	coincidence	Das ist purer Zufall.
+285	zufallen	fall shut	Die Tür fällt zu.
+286	zufallenheit	coincidental nature	Die Zufallenheit ist offensichtlich.
+287	zufalls	coincidentally	Das ist rein zufalls.
+288	zufallsfund	chance find	Der Zufallsfund ist wertvoll.
+289	zufallsprinzip	principle of chance	Das Zufallsprinzip ist erwiesen.
+290	zufallstref	chance hit	Der Zufallstref war unerwartet.
+291	zufallstreffer	chance hit	Der Zufallstreffer ist glücklich.
+292	zufallstreffer	hit by chance	Der Zufallstreffer war unerwartet.
+293	zufalltreffer	chance hit	Der Zufalltreffer ist wertvoll.
+294	zufalltreffer	chance encounter	Der Zufalltreffer ist interessant.
+295	zufallszahl	random number	Die Zufallszahl ist groß.
+296	zufallszahler	random number generator	Der Zufallszahler ist präzise.
+297	zufarben	color towards	Farbe zu!
+298	zufahrer	driver towards	Der Zufahrer ist schnell.
+299	zufahrt	approach road	Die Zufahrt ist eng.
+300	zufahrtstraße	access street	Die Zufahrtstraße ist belebt.
+301	zufall	happening	Der Zufall ist merkwürdig.
+302	zufallsbegebenheit	coincidence	Die Zufallsbegebenheit ist bemerkenswert.
+303	zufallsbegegnung	chance meeting	Die Zufallsbegegnung ist bedeutsam.
+304	zufallsbekanntschaft	chance acquaintance	Die Zufallsbekanntschaft ist fruchtbar.
+305	zufallsbeobachtung	chance observation	Die Zufallsbeobachtung ist wertvoll.
+306	zufallsbeobachter	chance observer	Der Zufallsbeobachter ist aufmerksam.
+307	zufallsbeobachterin	chance observer	Die Zufallsbeobachterin ist wach.
+308	zufallsbeobachtung	random observation	Die Zufallsbeobachtung ist interessant.
+309	zufallsberuf	chance profession	Der Zufallsberuf ist erfüllend.
+310	zufallsbeschaffenheit	random nature	Die Zufallsbeschaffenheit ist evident.
+311	zufallsbesichtigung	chance visit	Die Zufallsbesichtigung war schön.
+312	zufallsbesuch	chance visit	Der Zufallsbesuch war überraschend.
+313	zufallsbesucher	chance visitor	Der Zufallsbesucher ist willkommen.
+314	zufallsbesucherin	chance visitor	Die Zufallsbesucherin ist freundlich.
+315	zufallsbeule	chance bump	Die Zufallsbeule ist schmerzhaft.
+316	zufallsbeute	chance catch	Die Zufallsbeute ist wertvoll.
+317	zufallsbeutel	chance bag	Der Zufallsbeutel ist leer.
+318	zufallsbeurteilung	random assessment	Die Zufallsbeurteilung ist unfair.
+319	zufallsbezeichnung	random designation	Die Zufallsbezeichnung ist irreführend.
+320	zufallsbezichnung	chance accusation	Die Zufallsbezichnung ist unbegründet.
+321	zurückfahren	drive back	Fahre zurück!
+322	zurückgabe	return	Die Zurückgabe ist kostenlos.
+323	zurückgeben	give back	Gib das Buch zurück!
+324	zurückgehen	go back	Geh zurück!
+325	zurückgängig	reversible	Das ist zurückgängig zu machen.
+326	zurückgängigmachung	reversal	Die Zurückgängigmachung ist möglich.
+327	zurückgriff	recourse	Der Zurückgriff ist berechtigt.
+328	zurückgriffsrecht	right of recourse	Das Zurückgriffsrecht ist gültig.
+329	zurückgreifen	reach back	Greife nicht zu weit zurück!
+330	zurückgriffsrecht	recourse rights	Die Zurückgriffsrechte sind übertragen.
+331	zurückgriff	recurrence	Der Zurückgriff ist häufig.
+332	zurückhalt	reserve	Sein Zurückhalt ist bewundernswert.
+333	zurückhaltend	reserved	Er ist sehr zurückhaltend.
+334	zurückhaltende	reserved one	Die Zurückhaltende spricht wenig.
+335	zurückhaltendheit	reserve	Seine Zurückhaltendheit ist reizvoll.
+336	zurückhaltimg	holding back	Die Zurückhaltimg ist nötig.
+337	zurückhalten	hold back	Halte dich zurück!
+338	zurückhalter	one who holds back	Der Zurückhalter ist pessimistisch.
+339	zurückhaltvoll	full of reserve	Er ist sehr zurückhaltvoll.
+340	zurückhaltung	reserve	Seine Zurückhaltung ist bewundernswert.
+341	zurückhalt	restraint	Der Zurückhalt ist wichtig.
+342	zurückhand	backhand	Der Backhand-Schlag war stark.
+343	zurückhandgriff	backhand grip	Der Zurückhandgriff ist sicher.
+344	zurückhandhieb	backhand blow	Der Zurückhandhieb war scharf.
+345	zurückhandschlag	backhand stroke	Der Zurückhandschlag war erfolgreich.
+346	zurückhandstoß	backhand thrust	Der Zurückhandstoß war zielgenau.
+347	zurückhandstreich	backhand stroke	Der Zurückhandstreich war elegant.
+348	zurückhandstoß	backhand push	Der Zurückhandstoß war kräftig.
+349	zurückhandtechnik	backhand technique	Die Zurückhandtechnik ist ausgereift.
+350	zurückhandhieb	backhanded blow	Der Zurückhandhieb war unfair.
+351	zurückhängen	hang back	Die Wäsche hängt zurück.
+352	zurückhängerin	hanger back	Die Zurückhängerin ist faul.
+353	zurückhängerei	hanging back	Die Zurückhängerei ist ärgerlich.
+354	zurückhängung	hanging back	Die Zurückhängung ist vollständig.
+355	zurückhang	hang back	Der Zurückhang ist spürbar.
+356	zurückhansel	hang back	Der Zurückhansel ist langsam.
+357	zurückhängsel	hang back state	Das Zurückhängsel ist beobachtet.
+358	zurückhang	hanging state	Der Zurückhang ist zu erwarten.
+359	zusammenkommen	come together	Wir kommen morgen zusammen.
+360	zusammentragen	gather/collect	Trag die Informationen zusammen!
+361	zusammenfassen	summarize	Ich fasse das zusammen.
+362	zusammenfassung	summary	Die Zusammenfassung ist kurz.
+363	zusammenhang	connection	Der Zusammenhang ist unklar.
+364	zusammenhängend	coherent	Das ist sehr zusammenhängend.
+365	zusammenhängen	hang together	Alles hängt zusammen.
+366	zusammenkunft	meeting	Die Zusammenkunft ist morgen.
+367	zusammenlebens	living together	Das Zusammenleben ist harmonisch.
+368	zusammenleben	live together	Wir leben zusammen.
+369	zusammenleben	cohabitation	Das Zusammenleben ist neu.
+370	zusammensetzung	composition	Die Zusammensetzung ist klar.
+371	zusammensetzen	put together	Setz das Puzzle zusammen!
+372	zusammenstellen	compile	Stell eine Liste zusammen!
+373	zusammenstellung	compilation	Die Zusammenstellung ist vollständig.
+374	zusammenstoß	collision	Der Zusammenstoß war heftig.
+375	zusammenstoßen	collide	Die Autos stoßen zusammen.
+376	zusammenstoßung	collision	Die Zusammenstoßung ist dokumentiert.
+377	zusammentrag	collected items	Der Zusammentrag ist groß.
+378	zusammentrager	collector	Der Zusammentrager ist fleißig.
+379	zusammentragung	collection	Die Zusammentragung ist vollständig.
+380	zusammenverband	union	Der Zusammenverband ist stark.
+381	zusammenverdichtung	compression	Die Zusammenverdichtung ist möglich.
+382	zusammenverschlingung	intertwining	Die Zusammenverschlingung ist komplex.
+383	zusammenverschwörung	conspiracy	Die Zusammenverschwörung ist aufgedeckt.
+384	zusammenverschwörer	conspirator	Der Zusammenverschwörer ist verhaftet.
+385	zusammenverwachsung	fusion	Die Zusammenverwachsung ist fortgeschritten.
+386	zusammenverwachsung	merging	Die Zusammenverwachsung ist sichtbar.
+387	zusammenverwachsung	coalescence	Die Zusammenverwachsung ist vollendet.
+388	zusammenziehung	drawing together	Die Zusammenziehung ist merklich.
+389	zusammenziehen	draw together	Zieh die Vorhänge zusammen!
+390	zusammenziehung	contraction	Die Zusammenziehung ist spürbar.

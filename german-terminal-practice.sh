@@ -121,7 +121,7 @@ run_verb_practice() {
   while true; do
     local index=$((RANDOM % ${#verb_bank[@]}))
     local entry="${verb_bank[$index]}"
-    IFS=$'\t' read -r german english example <<< "$entry"
+    IFS=$'\t' read -r id german english example <<< "$entry"
 
     clear
     print_banner "Verbtraining: $title" "$YELLOW"
