@@ -3,6 +3,19 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 script="$script_dir/german-terminal-practice.sh"
+separable_verbs="$script_dir/data/separable-verbs.tsv"
+
+if ! awk -F '\t' '
+  NF != 3 || $1 == "" || $2 == "" || $3 == "" { exit 1 }
+' "$separable_verbs"; then
+  echo "Expected every separable verb row to have three populated TSV columns."
+  exit 1
+fi
+
+if [[ "$(cut -f1 "$separable_verbs" | sort | uniq -d)" != "" ]]; then
+  echo "Expected every separable verb infinitive to be unique."
+  exit 1
+fi
 
 set +e
 output="$(timeout 3s bash "$script" <<< "4" 2>&1)"
@@ -41,3 +54,4 @@ fi
 
 echo "Menu test passed"
 echo "Verb practice test passed"
+echo "Separable verb data test passed"
