@@ -15,6 +15,7 @@ CORPUS="${GERMAN_PRACTICE_CORPUS:-$DATA_DIR/sentences.tsv}"
 
 SEPARABLE_VERB_FILE="${GERMAN_PRACTICE_SEPARABLE_VERBS:-$DATA_DIR/separable-verbs.tsv}"
 INSEPARABLE_VERB_FILE="${GERMAN_PRACTICE_INSEPARABLE_VERBS:-$DATA_DIR/inseparable-verbs.tsv}"
+SEPARABLE_PRACTICE_FILE="${GERMAN_PRACTICE_SEPARABLE_PRACTICE:-$DATA_DIR/separable-practice.tsv}"
 
 if [[ ! -s "$SEPARABLE_VERB_FILE" ]]; then
   echo "Verb file not found or empty: $SEPARABLE_VERB_FILE"
@@ -48,7 +49,54 @@ print_menu() {
   echo -e "${GREEN}2.${RESET} Trennbare Verben lernen"
   echo -e "${GREEN}3.${RESET} Untrennbare Verben lernen"
   echo -e "${GREEN}4.${RESET} Beenden"
+  echo -e "${GREEN}5.${RESET} Trennbare Verben üben"
   echo
+}
+
+normalize_answer() {
+  # Ignore presentation differences, but preserve word boundaries so that a
+  # joined prefix cannot match the expected split form.
+  local answer="${1,,}"
+  answer="${answer//[.!?,;]/}"
+  printf '%s' "$answer" | sed -E 's/^[[:space:]]+//; s/[[:space:]]+$//; s/[[:space:]]+/ /g'
+}
+
+run_separable_practice() {
+  if [[ ! -s "$SEPARABLE_PRACTICE_FILE" ]]; then
+    echo "Practice file not found or empty: $SEPARABLE_PRACTICE_FILE"
+    return 1
+  fi
+
+  local -a exercises=()
+  mapfile -t exercises < <(grep -vE '^(#|$)' "$SEPARABLE_PRACTICE_FILE")
+
+  while true; do
+    local entry="${exercises[$((RANDOM % ${#exercises[@]}))]}"
+    local infinitive meaning prompt expected answer
+    IFS=$'\t' read -r infinitive meaning prompt expected <<< "$entry"
+
+    clear
+    print_banner "Übung: Trennbare Verben" "$YELLOW"
+    echo -e "${CYAN}Übersetze den Satz. Trenne das Präfix im Hauptsatz.${RESET}"
+    echo -e "${CYAN}Tippe m = Hauptmenü${RESET}"
+    echo
+    printf "${GREEN}%s${RESET} (%s)\n" "$infinitive" "$meaning"
+    printf "${YELLOW}🇬🇧  %s${RESET}\n\n" "$prompt"
+    printf 'Deine Antwort: '
+    IFS= read -r answer || return 0
+
+    if [[ "$answer" =~ ^[mM]$ ]]; then
+      return 0
+    elif [[ "$(normalize_answer "$answer")" == "$(normalize_answer "$expected")" ]]; then
+      echo -e "${GREEN}Richtig! Das Präfix steht am Satzende.${RESET}"
+    else
+      echo -e "${RED}Noch nicht. Richtige Antwort: $expected${RESET}"
+    fi
+    echo
+    printf 'Eingabetaste = nächste Aufgabe, m = Hauptmenü: '
+    IFS= read -r answer || return 0
+    [[ "$answer" =~ ^[mM]$ ]] && return 0
+  done
 }
 
 show_sentence_mode() {
@@ -165,7 +213,7 @@ run_verb_practice() {
 
 while true; do
   print_menu
-  printf 'Wähle eine Option [1-4]: '
+  printf 'Wähle eine Option [1-5]: '
   IFS= read -r choice
   echo
 
@@ -183,8 +231,11 @@ while true; do
       echo -e "${MAGENTA}Auf Wiedersehen!${RESET}"
       exit 0
       ;;
+    5)
+      run_separable_practice
+      ;;
     *)
-      echo -e "${RED}Ungültige Auswahl. Bitte wähle 1, 2, 3 oder 4.${RESET}"
+      echo -e "${RED}Ungültige Auswahl. Bitte wähle 1, 2, 3, 4 oder 5.${RESET}"
       echo
       ;;
   esac
