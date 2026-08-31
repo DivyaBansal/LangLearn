@@ -41,3 +41,21 @@ fi
 
 echo "Menu test passed"
 echo "Verb practice test passed"
+
+practice_data="$(mktemp)"
+trap 'rm -f "$practice_data"' EXIT
+printf 'aufstehen\tget up\tI get up.\tIch stehe auf.\n' > "$practice_data"
+
+split_output="$(printf '5\nIch stehe auf.\nm\n4\n' | GERMAN_PRACTICE_SEPARABLE_PRACTICE="$practice_data" timeout 3s bash "$script" 2>&1)"
+if [[ "$split_output" != *"Richtig!"* ]]; then
+  echo "Expected a correctly split separable verb to be accepted."
+  exit 1
+fi
+
+unsplit_output="$(printf '5\nIch aufstehe.\nm\n4\n' | GERMAN_PRACTICE_SEPARABLE_PRACTICE="$practice_data" timeout 3s bash "$script" 2>&1)"
+if [[ "$unsplit_output" == *"Richtig!"* ]] || [[ "$unsplit_output" != *"Noch nicht."* ]]; then
+  echo "Expected an unsplit separable verb to be rejected."
+  exit 1
+fi
+
+echo "Separable verb drill test passed"
