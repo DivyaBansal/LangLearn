@@ -26,8 +26,34 @@ if [[ ! -s "$INSEPARABLE_VERB_FILE" ]]; then
   exit 1
 fi
 
-mapfile -t SEPARABLE_VERBS < <(grep -vE '^(#|$)' "$SEPARABLE_VERB_FILE")
-mapfile -t INSEPARABLE_VERBS < <(grep -vE '^(#|$)' "$INSEPARABLE_VERB_FILE")
+SEPARABLE_VERBS=()
+SEPARABLE_LINE_NUMBERS=()
+INSEPARABLE_VERBS=()
+INSEPARABLE_LINE_NUMBERS=()
+
+load_verb_banks() {
+  local line line_number=0
+  SEPARABLE_VERBS=()
+  SEPARABLE_LINE_NUMBERS=()
+  while IFS= read -r line; do
+    line_number=$((line_number + 1))
+    [[ "$line" =~ ^(#|$) ]] && continue
+    SEPARABLE_VERBS+=("$line")
+    SEPARABLE_LINE_NUMBERS+=("$line_number")
+  done < "$SEPARABLE_VERB_FILE"
+
+  line_number=0
+  INSEPARABLE_VERBS=()
+  INSEPARABLE_LINE_NUMBERS=()
+  while IFS= read -r line; do
+    line_number=$((line_number + 1))
+    [[ "$line" =~ ^(#|$) ]] && continue
+    INSEPARABLE_VERBS+=("$line")
+    INSEPARABLE_LINE_NUMBERS+=("$line_number")
+  done < "$INSEPARABLE_VERB_FILE"
+}
+
+load_verb_banks
 
 print_banner() {
   local title="$1"
@@ -36,6 +62,50 @@ print_banner() {
   echo -e "${color}${line}${RESET}"
   echo -e "${color}${title}${RESET}"
   echo -e "${color}${line}${RESET}"
+}
+
+edit_tsv_entry() {
+  local file="$1"
+  local line_number="$2"
+  local question="$3"
+  local answer="$4"
+  local field choice replacement temp_file replacement_file
+
+  echo
+  echo "Was möchtest du bearbeiten?"
+  echo "1. Frage: $question"
+  echo "2. Antwort: $answer"
+  printf 'Auswahl [1-2] (Enter zum Abbrechen): '
+  IFS= read -r choice
+  case "$choice" in
+    1) field=1 ;;
+    2) field=2 ;;
+    *) return 0 ;;
+  esac
+
+  printf 'Neuer Text (TAB-Zeichen sind nicht erlaubt): '
+  IFS= read -r replacement
+  if [[ -z "$replacement" || "$replacement" == *$'\t'* ]]; then
+    echo "Der Eintrag wurde nicht geändert."
+    return 0
+  fi
+
+  replacement_file=$(mktemp "${file}.replacement.XXXXXX") || return 1
+  temp_file=$(mktemp "${file}.edit.XXXXXX") || {
+    rm -f "$replacement_file"
+    return 1
+  }
+  printf '%s\n' "$replacement" > "$replacement_file"
+  if awk -v target="$line_number" -v field="$field" \
+      -v replacement_file="$replacement_file" 'BEGIN { FS=OFS="\t" }
+      NR == target { getline replacement < replacement_file; $field = replacement }
+      { print }' "$file" > "$temp_file" && mv "$temp_file" "$file"; then
+    echo "Eintrag gespeichert."
+  else
+    echo "Der Eintrag konnte nicht gespeichert werden."
+    rm -f "$temp_file"
+  fi
+  rm -f "$replacement_file"
 }
 
 print_menu() {
@@ -58,10 +128,11 @@ show_sentence_mode() {
   fi
 
   while true; do
-    line="$(shuf -n 1 "$CORPUS" 2>/dev/null)" || {
+    line_number="$(shuf -i 1-"$(wc -l < "$CORPUS")" -n 1 2>/dev/null)" || {
       echo "Could not pick a sentence from: $CORPUS"
       exit 1
     }
+    line="$(sed -n "${line_number}p" "$CORPUS")"
 
     english="${line%%$'\t'*}"
     german="${line#*$'\t'}"
@@ -77,13 +148,14 @@ show_sentence_mode() {
     print_banner "Übersetzungsübung" "$BLUE"
     echo -e "${CYAN}Drücke t = deutsche Übersetzung anzeigen${RESET}"
     echo -e "${CYAN}Drücke n = nächsten englischen Satz${RESET}"
+    echo -e "${CYAN}Drücke e = Frage oder Antwort bearbeiten${RESET}"
     echo -e "${CYAN}Drücke m = Hauptmenü${RESET}"
     echo -e "${CYAN}Drücke Strg+C = beenden${RESET}"
     echo
     printf "${YELLOW}🇬🇧  %s${RESET}\n\n" "$english"
 
     while true; do
-      printf 'Befehl [t/n/m]: '
+      printf 'Befehl [t/n/e/m]: '
       IFS= read -rsn1 key
       printf '%s\n' "$key"
 
@@ -92,6 +164,11 @@ show_sentence_mode() {
           printf "\n${GREEN}🇩🇪  %s${RESET}\n\n" "$german"
           ;;
         n|N)
+          break
+          ;;
+        e|E)
+          IFS= read -r _
+          edit_tsv_entry "$CORPUS" "$line_number" "$english" "$german"
           break
           ;;
         m|M)
@@ -121,19 +198,26 @@ run_verb_practice() {
   while true; do
     local index=$((RANDOM % ${#verb_bank[@]}))
     local entry="${verb_bank[$index]}"
+    local line_number
     IFS=$'\t' read -r german english example <<< "$entry"
+    if [[ "$mode" == "separable" ]]; then
+      line_number="${SEPARABLE_LINE_NUMBERS[$index]}"
+    else
+      line_number="${INSEPARABLE_LINE_NUMBERS[$index]}"
+    fi
 
     clear
     print_banner "Verbtraining: $title" "$YELLOW"
     echo -e "${CYAN}Drücke b = Bedeutung anzeigen${RESET}"
     echo -e "${CYAN}Drücke n = nächstes Verb${RESET}"
+    echo -e "${CYAN}Drücke e = Frage oder Antwort bearbeiten${RESET}"
     echo -e "${CYAN}Drücke m = Hauptmenü${RESET}"
-    echo -e "${CYAN}Drücke e = beenden${RESET}"
+    echo -e "${CYAN}Drücke x = beenden${RESET}"
     echo
     printf "${GREEN}🇩🇪  %s${RESET}\n\n" "$german"
 
     while true; do
-      printf 'Befehl [b/n/m/e]: '
+      printf 'Befehl [b/n/e/m/x]: '
       IFS= read -rsn1 key
       printf '%s\n' "$key"
 
@@ -149,10 +233,17 @@ run_verb_practice() {
         n|N)
           break
           ;;
+        e|E)
+          IFS= read -r _
+          edit_tsv_entry "$([[ "$mode" == "separable" ]] && echo "$SEPARABLE_VERB_FILE" || echo "$INSEPARABLE_VERB_FILE")" \
+            "$line_number" "$german" "$english"
+          load_verb_banks
+          break
+          ;;
         m|M)
           return 0
           ;;
-        e|E)
+        x|X)
           exit 0
           ;;
         *)
