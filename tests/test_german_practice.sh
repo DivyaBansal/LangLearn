@@ -39,5 +39,34 @@ if [[ "$verb_output" != *"Bedeutung:"* ]]; then
   exit 1
 fi
 
+edit_dir="$(mktemp -d)"
+trap 'rm -rf "$edit_dir"' EXIT
+printf 'old question\told answer\n' > "$edit_dir/sentences.tsv"
+printf 'gehen\tgo\tIch gehe.\n' > "$edit_dir/separable-verbs.tsv"
+printf 'kommen\tcome\tIch komme.\n' > "$edit_dir/inseparable-verbs.tsv"
+
+printf '1\ne\nq\nnew question\nm\n4\n' |
+  GERMAN_PRACTICE_CORPUS="$edit_dir/sentences.tsv" \
+  GERMAN_PRACTICE_SEPARABLE_VERBS="$edit_dir/separable-verbs.tsv" \
+  GERMAN_PRACTICE_INSEPARABLE_VERBS="$edit_dir/inseparable-verbs.tsv" \
+  TERM=xterm bash "$script" >/dev/null 2>&1
+
+if [[ "$(<"$edit_dir/sentences.tsv")" != $'new question\told answer' ]]; then
+  echo "Expected the sentence question to be editable."
+  exit 1
+fi
+
+printf '2\ne\na\nnew meaning\nm\n4\n' |
+  GERMAN_PRACTICE_CORPUS="$edit_dir/sentences.tsv" \
+  GERMAN_PRACTICE_SEPARABLE_VERBS="$edit_dir/separable-verbs.tsv" \
+  GERMAN_PRACTICE_INSEPARABLE_VERBS="$edit_dir/inseparable-verbs.tsv" \
+  TERM=xterm bash "$script" >/dev/null 2>&1
+
+if [[ "$(<"$edit_dir/separable-verbs.tsv")" != $'gehen\tnew meaning\tIch gehe.' ]]; then
+  echo "Expected the verb answer to be editable without losing the example."
+  exit 1
+fi
+
 echo "Menu test passed"
 echo "Verb practice test passed"
+echo "Edit test passed"
