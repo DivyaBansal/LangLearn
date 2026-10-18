@@ -47,7 +47,8 @@ print_menu() {
   echo -e "${GREEN}1.${RESET} Satz übersetzen"
   echo -e "${GREEN}2.${RESET} Trennbare Verben lernen"
   echo -e "${GREEN}3.${RESET} Untrennbare Verben lernen"
-  echo -e "${GREEN}4.${RESET} Beenden"
+  echo -e "${GREEN}4.${RESET} Einträge bearbeiten (TSV)"
+  echo -e "${GREEN}5.${RESET} Beenden"
   echo
 }
 
@@ -163,9 +164,22 @@ run_verb_practice() {
   done
 }
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+launch_editor() {
+  if [[ ! -x "$SCRIPT_DIR/edit_entry.py" ]]; then
+    echo -e "${RED}Editor nicht gefunden oder nicht ausführbar: $SCRIPT_DIR/edit_entry.py${RESET}"
+    echo "Stelle sicher, dass die Datei existiert und ausführbar ist."
+    read -p "Drücke Enter um fortzufahren..."
+    return 1
+  fi
+
+  python3 "$SCRIPT_DIR/edit_entry.py"
+}
+
 while true; do
   print_menu
-  printf 'Wähle eine Option [1-4]: '
+  printf 'Wähle eine Option [1-5]: '
   IFS= read -r choice
   echo
 
@@ -179,12 +193,15 @@ while true; do
     3)
       run_verb_practice "inseparable"
       ;;
-    4|q|Q)
+    4)
+      launch_editor
+      ;;
+    5|q|Q)
       echo -e "${MAGENTA}Auf Wiedersehen!${RESET}"
       exit 0
       ;;
     *)
-      echo -e "${RED}Ungültige Auswahl. Bitte wähle 1, 2, 3 oder 4.${RESET}"
+      echo -e "${RED}Ungültige Auswahl. Bitte wähle 1, 2, 3, 4 oder 5.${RESET}"
       echo
       ;;
   esac
