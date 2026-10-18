@@ -51,6 +51,77 @@ print_menu() {
   echo
 }
 
+discard_pending_input() {
+  local pending
+  IFS= read -r -t 0.01 pending || true
+}
+
+edit_tsv_entry() {
+  local file="$1"
+  local entry="$2"
+  local question_label="$3"
+  local answer_label="$4"
+  local question answer extra choice replacement column tmp updated line new_line
+
+  IFS=$'\t' read -r question answer extra <<< "$entry"
+  echo
+  echo "Was möchtest du bearbeiten?"
+  echo "q = Frage ($question_label): $question"
+  echo "a = Antwort ($answer_label): $answer"
+  printf 'Auswahl [q/a]: '
+  IFS= read -r choice
+
+  case "$choice" in
+    q|Q|1)
+      column=1
+      printf 'Neue Frage: '
+      ;;
+    a|A|2)
+      column=2
+      printf 'Neue Antwort: '
+      ;;
+    *)
+      echo -e "${RED}Ungültige Auswahl. Der Eintrag wurde nicht geändert.${RESET}"
+      return 0
+      ;;
+  esac
+
+  IFS= read -r replacement
+  if [[ -z "$replacement" || "$replacement" == *$'\t'* ]]; then
+    echo -e "${RED}Die Eingabe darf nicht leer sein und kein TAB enthalten.${RESET}"
+    return 0
+  fi
+
+  tmp="$(mktemp "${file}.tmp.XXXXXX")" || {
+    echo "Konnte keine temporäre Datei für $file erstellen."
+    return 1
+  }
+  updated=false
+  while IFS= read -r line || [[ -n "$line" ]]; do
+    if [[ "$updated" == false && "$line" == "$entry" ]]; then
+      if [[ "$column" == 1 ]]; then
+        new_line="${replacement}"$'\t'"${answer}"
+      else
+        new_line="${question}"$'\t'"${replacement}"
+      fi
+      [[ -n "$extra" ]] && new_line+=$'\t'"${extra}"
+      printf '%s\n' "$new_line" >> "$tmp"
+      updated=true
+    else
+      printf '%s\n' "$line" >> "$tmp"
+    fi
+  done < "$file"
+
+  if [[ "$updated" != true ]]; then
+    rm -f -- "$tmp"
+    echo "Der ausgewählte Eintrag wurde nicht gefunden."
+    return 1
+  fi
+
+  mv -- "$tmp" "$file"
+  echo -e "${GREEN}Eintrag gespeichert.${RESET}"
+}
+
 show_sentence_mode() {
   if [[ ! -s "$CORPUS" ]]; then
     echo "Corpus file not found or empty: $CORPUS"
@@ -77,6 +148,7 @@ show_sentence_mode() {
     print_banner "Übersetzungsübung" "$BLUE"
     echo -e "${CYAN}Drücke t = deutsche Übersetzung anzeigen${RESET}"
     echo -e "${CYAN}Drücke n = nächsten englischen Satz${RESET}"
+    echo -e "${CYAN}Drücke e = Frage oder Antwort bearbeiten${RESET}"
     echo -e "${CYAN}Drücke m = Hauptmenü${RESET}"
     echo -e "${CYAN}Drücke Strg+C = beenden${RESET}"
     echo
@@ -93,6 +165,10 @@ show_sentence_mode() {
           ;;
         n|N)
           break
+          ;;
+        e|E)
+          discard_pending_input
+          edit_tsv_entry "$CORPUS" "$line" "englischer Satz" "deutsche Übersetzung"
           ;;
         m|M)
           return 0
@@ -127,8 +203,9 @@ run_verb_practice() {
     print_banner "Verbtraining: $title" "$YELLOW"
     echo -e "${CYAN}Drücke b = Bedeutung anzeigen${RESET}"
     echo -e "${CYAN}Drücke n = nächstes Verb${RESET}"
+    echo -e "${CYAN}Drücke e = Frage oder Antwort bearbeiten${RESET}"
     echo -e "${CYAN}Drücke m = Hauptmenü${RESET}"
-    echo -e "${CYAN}Drücke e = beenden${RESET}"
+    echo -e "${CYAN}Drücke x = beenden${RESET}"
     echo
     printf "${GREEN}🇩🇪  %s${RESET}\n\n" "$german"
 
@@ -153,10 +230,15 @@ run_verb_practice() {
           return 0
           ;;
         e|E)
+          discard_pending_input
+          edit_tsv_entry "$([[ "$mode" == "separable" ]] && echo "$SEPARABLE_VERB_FILE" || echo "$INSEPARABLE_VERB_FILE")" \
+            "$entry" "deutsches Verb" "englische Bedeutung"
+          ;;
+        x|X)
           exit 0
           ;;
         *)
-          echo -e "${RED}Verwende b für die Bedeutung, n für das nächste Verb, m für das Hauptmenü oder e zum Beenden.${RESET}"
+          echo -e "${RED}Verwende b für die Bedeutung, n für das nächste Verb, e zum Bearbeiten, m für das Hauptmenü oder x zum Beenden.${RESET}"
           ;;
       esac
     done
