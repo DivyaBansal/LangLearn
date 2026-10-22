@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deutsch-Lernprogramm</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <header>
+      <h1>Deutsch-Lernprogramm</h1>
+      <nav id="nav" hidden>
+        <button type="button" data-action="menu" title="Hauptmenü (m)">Hauptmenü</button>
+      </nav>
+    </header>
+
+    <p id="status" class="status">Lade Daten …</p>
+
+    <section id="menu" hidden>
+      <p class="prompt">Wähle einen Modus:</p>
+      <div class="menu-grid">
+        <button type="button" data-mode="sentence" data-key="1">
+          <span class="key">1</span> Satz übersetzen
+        </button>
+        <button type="button" data-mode="separable" data-key="2">
+          <span class="key">2</span> Trennbare Verben lernen
+        </button>
+        <button type="button" data-mode="inseparable" data-key="3">
+          <span class="key">3</span> Untrennbare Verben lernen
+        </button>
+      </div>
+    </section>
+
+    <section id="sentence" hidden>
+      <p class="hint">n = nächster englischer Satz · t = deutsche Übersetzung · m = Hauptmenü</p>
+      <p class="word lang-en" id="sentence-en"></p>
+      <p class="word lang-de" id="sentence-de" hidden></p>
+      <div class="actions">
+        <button type="button" data-action="toggle-translation" title="Übersetzung (t)">Übersetzung anzeigen</button>
+        <button type="button" data-action="next-sentence" title="Nächster Satz (n)">Nächster Satz</button>
+      </div>
+    </section>
+
+    <section id="verb" hidden>
+      <p class="hint">b = Bedeutung · n = nächstes Verb · m = Hauptmenü</p>
+      <p class="heading" id="verb-title"></p>
+      <p class="word lang-de" id="verb-de"></p>
+      <div id="verb-answer" class="answer" hidden>
+        <p class="lang-en" id="verb-en"></p>
+        <p class="example" id="verb-example"></p>
+      </div>
+      <div class="actions">
+        <button type="button" data-action="toggle-meaning" title="Bedeutung (b)">Bedeutung anzeigen</button>
+        <button type="button" data-action="next-verb" title="Nächstes Verb (n)">Nächstes Verb</button>
+      </div>
+    </section>
+
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+:root {
+  --bg: #1e1e2e;
+  --card: #2a2a3d;
+  --text: #e6e6f0;
+  --muted: #9a9ab5;
+  --blue: #6aa9ff;
+  --green: #7fd67f;
+  --yellow: #f5d363;
+  --magenta: #d68aff;
+  --red: #ff7b7b;
+  --cyan: #6fd8e6;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.card {
+  width: min(640px, 100%);
+  background: var(--card);
+  border-radius: 12px;
+  padding: 1.5rem 2rem 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 2px solid var(--magenta);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--magenta);
+}
+
+.heading {
+  margin: 0 0 0.5rem;
+  color: var(--yellow);
+  font-weight: 600;
+}
+
+.prompt { color: var(--cyan); }
+
+.hint {
+  color: var(--cyan);
+  font-size: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+.status, .message {
+  color: var(--muted);
+  min-height: 1.25em;
+}
+
+.message { color: var(--red); }
+
+.word {
+  font-size: 1.6rem;
+  line-height: 1.4;
+  margin: 1.5rem 0;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.lang-en { color: var(--yellow); }
+.lang-de { color: var(--green); }
+
+.answer {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.answer .lang-en {
+  color: var(--blue);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.example {
+  color: var(--muted);
+  font-style: italic;
+  margin: 0.5rem 0 0;
+}
+
+.menu-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.key {
+  display: inline-block;
+  min-width: 1.5rem;
+  text-align: center;
+  color: var(--green);
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+button {
+  font: inherit;
+  color: var(--text);
+  background: #353550;
+  border: 1px solid #4a4a6a;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+button:hover, button:focus-visible {
+  background: #414165;
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+nav button {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+[hidden] { display: none !important; }
