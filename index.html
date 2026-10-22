@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A focused, friendly German practice app for sentences and verbs.">
+    <title>Wortweise — German practice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <button class="brand" type="button" data-action="home" aria-label="Return to home">
+          <span class="brand-mark" aria-hidden="true">W</span>
+          <span>Wortweise</span>
+        </button>
+        <div class="header-note"><span class="status-dot"></span> Practice at your pace</div>
+      </header>
+
+      <main id="app" tabindex="-1">
+        <section id="home-view" class="view home-view" aria-labelledby="home-title">
+          <div class="hero-copy">
+            <p class="eyebrow">German, one thought at a time</p>
+            <h1 id="home-title">Build fluency through <em>small moments.</em></h1>
+            <p class="lede">Practice real sentences, understand tricky verbs, and grow more comfortable with German every day.</p>
+          </div>
+
+          <div class="mode-grid" aria-label="Practice modes">
+            <button class="mode-card mode-card--sentences" type="button" data-mode="sentences">
+              <span class="mode-icon" aria-hidden="true">Aa</span>
+              <span class="mode-copy">
+                <span class="mode-kicker">Translate</span>
+                <span class="mode-title">Everyday sentences</span>
+                <span class="mode-description">Read in English, then reveal the natural German phrasing.</span>
+              </span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </button>
+
+            <button class="mode-card mode-card--separable" type="button" data-mode="separable">
+              <span class="mode-icon" aria-hidden="true">↔</span>
+              <span class="mode-copy">
+                <span class="mode-kicker">Verb practice</span>
+                <span class="mode-title">Separable verbs</span>
+                <span class="mode-description">See how prefixes travel and verbs come back together.</span>
+              </span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </button>
+
+            <button class="mode-card mode-card--inseparable" type="button" data-mode="inseparable">
+              <span class="mode-icon" aria-hidden="true">∞</span>
+              <span class="mode-copy">
+                <span class="mode-kicker">Verb practice</span>
+                <span class="mode-title">Inseparable verbs</span>
+                <span class="mode-description">Learn the prefixes that always stay firmly attached.</span>
+              </span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <p class="keyboard-hint"><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> to choose a mode</p>
+        </section>
+
+        <section id="practice-view" class="view practice-view" aria-live="polite" hidden>
+          <div class="practice-topbar">
+            <button class="text-button" type="button" data-action="home"><span aria-hidden="true">←</span> All practice</button>
+            <span id="mode-label" class="mode-pill"></span>
+          </div>
+
+          <article class="practice-card">
+            <div class="card-meta">
+              <span id="prompt-label">Translate into German</span>
+              <span id="item-count"></span>
+            </div>
+            <p id="prompt" class="prompt"></p>
+
+            <div id="answer-panel" class="answer-panel" hidden>
+              <span id="answer-label" class="answer-label">Auf Deutsch</span>
+              <p id="answer" class="answer"></p>
+              <p id="example" class="example"></p>
+            </div>
+
+            <div class="card-actions">
+              <button id="reveal-button" class="button button--primary" type="button" data-action="reveal">Show answer <kbd>Space</kbd></button>
+              <button class="button button--secondary" type="button" data-action="next">Next <span aria-hidden="true">→</span></button>
+            </div>
+          </article>
+
+          <p class="practice-tip">Tip: Say your answer aloud before revealing it.</p>
+        </section>
+
+        <section id="error-view" class="view error-view" hidden>
+          <p class="eyebrow">We hit a snag</p>
+          <h1>Practice data couldn’t be loaded.</h1>
+          <p id="error-message"></p>
+          <button class="button button--primary" type="button" data-action="home">Back home</button>
+        </section>
+      </main>
+
+      <footer><span>Made for steady progress</span><span>Deutsch lernen · Jeden Tag</span></footer>
+    </div>
+    <script src="app.js" defer></script>
+  </body>
+</html>
