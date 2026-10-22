@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deutsch-Lernprogramm</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>Deutsch-Lernprogramm</h1>
+      <nav id="menu" class="menu" aria-label="Hauptmenü">
+        <button type="button" data-mode="sentence">Satz übersetzen</button>
+        <button type="button" data-mode="separable">Trennbare Verben</button>
+        <button type="button" data-mode="inseparable">Untrennbare Verben</button>
+      </nav>
+    </header>
+
+    <p id="status" class="status" role="status">Lade Daten …</p>
+
+    <section id="practice" class="card" hidden>
+      <p id="mode-title" class="mode-title"></p>
+      <p id="prompt" class="prompt"></p>
+      <div id="answer" class="answer" hidden></div>
+      <div class="actions">
+        <button type="button" id="reveal">Anzeigen</button>
+        <button type="button" id="next">Nächster</button>
+        <button type="button" id="home" class="ghost">Hauptmenü</button>
+      </div>
+      <p class="hint" id="hint"></p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
