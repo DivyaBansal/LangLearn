@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#15314b">
+    <title>Deutschdeck — German practice</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Deutschdeck home">
+        <span class="brand-mark" aria-hidden="true">D</span>
+        <span>Deutschdeck</span>
+      </a>
+      <button class="text-button" id="change-mode" type="button" hidden>Modus wechseln</button>
+    </header>
+
+    <main>
+      <section class="welcome" id="welcome" aria-labelledby="welcome-title">
+        <div class="welcome-copy">
+          <p class="intro">Kleine Karten. Klare Fortschritte.</p>
+          <h1 id="welcome-title">Deutsch üben,<br>eine Karte nach der anderen.</h1>
+          <p class="lede">Wähle eine Übung und lerne mit denselben Sätzen und Verben wie im Terminal.</p>
+        </div>
+
+        <div class="mode-list" aria-label="Übungsmodus wählen">
+          <button class="mode-card" type="button" data-mode="sentences">
+            <span class="mode-icon" aria-hidden="true">Aa</span>
+            <span class="mode-copy"><strong>Sätze übersetzen</strong><small>Englisch lesen, Deutsch aufdecken</small></span>
+            <span class="mode-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="mode-card" type="button" data-mode="separable">
+            <span class="mode-icon split" aria-hidden="true">ab | fahren</span>
+            <span class="mode-copy"><strong>Trennbare Verben</strong><small>Bedeutung und Beispiel lernen</small></span>
+            <span class="mode-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="mode-card" type="button" data-mode="inseparable">
+            <span class="mode-icon joined" aria-hidden="true">verstehen</span>
+            <span class="mode-copy"><strong>Untrennbare Verben</strong><small>Präfixe sicher erkennen</small></span>
+            <span class="mode-arrow" aria-hidden="true">↗</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="practice" id="practice" hidden aria-live="polite">
+        <div class="practice-heading">
+          <div>
+            <p class="mode-name" id="mode-name"></p>
+            <h1 id="practice-title">Was heißt das auf Deutsch?</h1>
+          </div>
+          <p class="counter"><span id="seen-count">1</span> geübt</p>
+        </div>
+
+        <article class="study-card" id="study-card">
+          <div class="card-front">
+            <p class="language-label" id="prompt-label">Englisch</p>
+            <p class="prompt" id="prompt"></p>
+          </div>
+          <div class="answer-panel" id="answer-panel" hidden>
+            <p class="language-label" id="answer-label">Deutsch</p>
+            <p class="answer" id="answer"></p>
+            <p class="example" id="example" hidden></p>
+          </div>
+        </article>
+
+        <div class="controls">
+          <button class="primary-button" id="reveal" type="button">Antwort zeigen <kbd>Leertaste</kbd></button>
+          <button class="next-button" id="next" type="button">Nächste Karte <kbd>N</kbd></button>
+        </div>
+        <p class="error" id="error" role="alert" hidden></p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Lerne in deinem Tempo.</p>
+      <p><span aria-hidden="true">●</span> Daten bleiben auf deinem Gerät</p>
+    </footer>
+  </body>
+</html>
