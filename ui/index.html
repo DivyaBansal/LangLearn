@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deutsch-Lernprogramm</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #1b1b2f; color: #eee; margin: 0;
+         display: flex; justify-content: center; padding: 2rem 1rem; }
+  main { width: 100%; max-width: 640px; }
+  h1 { color: #d68cff; text-align: center; }
+  .menu button, .actions button { display: block; width: 100%; margin: .5rem 0; padding: .9rem;
+         font-size: 1.1rem; border: 0; border-radius: 8px; cursor: pointer; background: #2f2f52; color: #eee; }
+  .menu button:hover, .actions button:hover { background: #44447a; }
+  .actions { display: flex; gap: .5rem; }
+  .card { background: #26264a; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; min-height: 4rem; }
+  .en { color: #ffd54f; font-size: 1.3rem; }
+  .de { color: #69f0ae; font-size: 1.3rem; margin-top: 1rem; }
+  .hint { color: #888; font-size: .85rem; text-align: center; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Deutsch-Lernprogramm</h1>
+  <section id="menu" class="menu">
+    <p>Wähle einen Modus:</p>
+    <button data-mode="sentences">1. Satz übersetzen</button>
+    <button data-mode="separable">2. Trennbare Verben lernen</button>
+    <button data-mode="inseparable">3. Untrennbare Verben lernen</button>
+  </section>
+  <section id="practice" hidden>
+    <h2 id="title"></h2>
+    <div class="card"><div id="prompt" class="en"></div><div id="answer" class="de" hidden></div></div>
+    <div class="actions">
+      <button id="reveal"></button>
+      <button id="next">Nächster (n)</button>
+      <button id="back">Hauptmenü (m)</button>
+    </div>
+    <p class="hint">Tastatur: Leertaste/t/b = anzeigen, n = weiter, m = Menü</p>
+  </section>
+</main>
+<script>
+const TITLES = { sentences: "Übersetzungsübung", separable: "Trennbare Präfixe", inseparable: "Untrennbare Präfixe" };
+const $ = id => document.getElementById(id);
+let mode = null, item = null;
+
+function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+async function next() {
+  const r = await fetch("/api/random/" + mode);
+  item = await r.json();
+  $("answer").hidden = true;
+  $("prompt").textContent = mode === "sentences" ? "🇬🇧  " + item.english : "🇩🇪  " + item.german;
+  $("prompt").className = mode === "sentences" ? "en" : "de";
+}
+function reveal() {
+  if (!item) return;
+  $("answer").innerHTML = mode === "sentences" ? "🇩🇪  " + esc(item.german)
+    : "Bedeutung: " + esc(item.english) + "<br><br><small>Beispiel: " + esc(item.example) + "</small>";
+  $("answer").hidden = false;
+}
+function start(m) {
+  mode = m;
+  $("menu").hidden = true; $("practice").hidden = false;
+  $("title").textContent = TITLES[m];
+  $("reveal").textContent = m === "sentences" ? "Übersetzung (t)" : "Bedeutung (b)";
+  next();
+}
+function menu() { mode = null; $("menu").hidden = false; $("practice").hidden = true; }
+
+document.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => start(b.dataset.mode));
+$("reveal").onclick = reveal; $("next").onclick = next; $("back").onclick = menu;
+document.addEventListener("keydown", e => {
+  if (!mode) return;
+  if ("tb ".includes(e.key.toLowerCase())) { e.preventDefault(); reveal(); }
+  else if (e.key.toLowerCase() === "n") next();
+  else if (e.key.toLowerCase() === "m") menu();
+});
+</script>
+</body>
+</html>
