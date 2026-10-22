@@ -1,0 +1,1 @@
+{"state": "done", "message": "Added browser UI (ui/index.html, launched via ./german-ui.sh): school-notebook styled menu, sentence translation and separable/inseparable verb practice with keyboard shortcuts. Terminal script untouched; tests pass. Not visually checked in a browser."}
