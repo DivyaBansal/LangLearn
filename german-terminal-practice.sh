@@ -10,10 +10,15 @@ RED='\033[1;31m'
 DIM='\033[2m'
 RESET='\033[0m'
 
-if [[ -t 1 && "${NO_COLOR:-}" != "1" ]]; then
-  UI_COLOR=true
-else
-  UI_COLOR=false
+if [[ ! -t 1 || "${NO_COLOR:-}" == "1" ]]; then
+  BLUE=''
+  GREEN=''
+  YELLOW=''
+  CYAN=''
+  MAGENTA=''
+  RED=''
+  DIM=''
+  RESET=''
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -35,12 +40,6 @@ fi
 
 mapfile -t SEPARABLE_VERBS < <(grep -vE '^(#|$)' "$SEPARABLE_VERB_FILE")
 mapfile -t INSEPARABLE_VERBS < <(grep -vE '^(#|$)' "$INSEPARABLE_VERB_FILE")
-
-ui_color() {
-  if [[ "$UI_COLOR" == true ]]; then
-    printf '%b' "$1"
-  fi
-}
 
 clear_screen() {
   if [[ -t 1 && -t 0 && -n "${TERM:-}" && "$TERM" != dumb ]]; then
