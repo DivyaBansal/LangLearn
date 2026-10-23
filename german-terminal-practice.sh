@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
 
-# Colors
+# UI colors and symbols
 BLUE='\033[1;34m'
 GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
 CYAN='\033[1;36m'
 MAGENTA='\033[1;35m'
 RED='\033[1;31m'
+DIM='\033[2m'
 RESET='\033[0m'
+
+if [[ -t 1 && "${NO_COLOR:-}" != "1" ]]; then
+  UI_COLOR=true
+else
+  UI_COLOR=false
+fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DATA_DIR="${GERMAN_PRACTICE_DATA_DIR:-$SCRIPT_DIR/data}"
@@ -29,26 +36,54 @@ fi
 mapfile -t SEPARABLE_VERBS < <(grep -vE '^(#|$)' "$SEPARABLE_VERB_FILE")
 mapfile -t INSEPARABLE_VERBS < <(grep -vE '^(#|$)' "$INSEPARABLE_VERB_FILE")
 
+ui_color() {
+  if [[ "$UI_COLOR" == true ]]; then
+    printf '%b' "$1"
+  fi
+}
+
+clear_screen() {
+  if [[ -t 1 && -t 0 && -n "${TERM:-}" && "$TERM" != dumb ]]; then
+    clear
+  else
+    printf '\n'
+  fi
+}
+
 print_banner() {
   local title="$1"
   local color="$2"
-  local line="════════════════════════════════════════"
-  echo -e "${color}${line}${RESET}"
-  echo -e "${color}${title}${RESET}"
-  echo -e "${color}${line}${RESET}"
+  local line="────────────────────────────────────────"
+  printf '%b%s%b\n' "$color" "$line" "$RESET"
+  printf '%b  %s%b\n' "$color" "$title" "$RESET"
+  printf '%b%s%b\n' "$color" "$line" "$RESET"
+}
+
+print_footer() {
+  printf '\n%b%s%b\n' "$DIM" "────────────────────────────────────────" "$RESET"
+  printf '%b  q  Beenden   •   Strg+C  Sofort beenden%b\n' "$DIM" "$RESET"
+}
+
+print_status() {
+  local label="$1"
+  local value="$2"
+  printf '%b  %-12s%b %s\n' "$DIM" "$label" "$RESET" "$value"
 }
 
 print_menu() {
-  clear
+  clear_screen
   echo
   print_banner "Deutsch-Lernprogramm" "$MAGENTA"
-  echo -e "${CYAN}Wähle einen Modus:${RESET}"
   echo
-  echo -e "${GREEN}1.${RESET} Satz übersetzen"
-  echo -e "${GREEN}2.${RESET} Trennbare Verben lernen"
-  echo -e "${GREEN}3.${RESET} Untrennbare Verben lernen"
-  echo -e "${GREEN}4.${RESET} Beenden"
+  printf '%bWähle einen Modus%b\n' "$CYAN" "$RESET"
   echo
+  printf '  %b[1]%b  Satz übersetzen\n' "$GREEN" "$RESET"
+  printf '  %b[2]%b  Trennbare Verben lernen\n' "$GREEN" "$RESET"
+  printf '  %b[3]%b  Untrennbare Verben lernen\n' "$GREEN" "$RESET"
+  printf '  %b[4]%b  Beenden\n' "$GREEN" "$RESET"
+  echo
+  print_status "Datenquelle" "$DATA_DIR"
+  print_footer
 }
 
 show_sentence_mode() {
@@ -73,12 +108,9 @@ show_sentence_mode() {
       continue
     fi
 
-    clear
+    clear_screen
     print_banner "Übersetzungsübung" "$BLUE"
-    echo -e "${CYAN}Drücke t = deutsche Übersetzung anzeigen${RESET}"
-    echo -e "${CYAN}Drücke n = nächsten englischen Satz${RESET}"
-    echo -e "${CYAN}Drücke m = Hauptmenü${RESET}"
-    echo -e "${CYAN}Drücke Strg+C = beenden${RESET}"
+    printf '%b  t  Übersetzung anzeigen   n  Nächster Satz   m  Hauptmenü%b\n' "$CYAN" "$RESET"
     echo
     printf "${YELLOW}🇬🇧  %s${RESET}\n\n" "$english"
 
@@ -123,12 +155,9 @@ run_verb_practice() {
     local entry="${verb_bank[$index]}"
     IFS=$'\t' read -r german english example <<< "$entry"
 
-    clear
+    clear_screen
     print_banner "Verbtraining: $title" "$YELLOW"
-    echo -e "${CYAN}Drücke b = Bedeutung anzeigen${RESET}"
-    echo -e "${CYAN}Drücke n = nächstes Verb${RESET}"
-    echo -e "${CYAN}Drücke m = Hauptmenü${RESET}"
-    echo -e "${CYAN}Drücke e = beenden${RESET}"
+    printf '%b  b  Bedeutung anzeigen   n  Nächstes Verb   m  Hauptmenü%b\n' "$CYAN" "$RESET"
     echo
     printf "${GREEN}🇩🇪  %s${RESET}\n\n" "$german"
 
