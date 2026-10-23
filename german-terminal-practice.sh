@@ -29,6 +29,22 @@ fi
 mapfile -t SEPARABLE_VERBS < <(grep -vE '^(#|$)' "$SEPARABLE_VERB_FILE")
 mapfile -t INSEPARABLE_VERBS < <(grep -vE '^(#|$)' "$INSEPARABLE_VERB_FILE")
 
+print_header() {
+  local text="$1"
+  local color="$2"
+  local width=46
+  local padding=$(( (width - ${#text}) / 2 ))
+  local left_padding=""
+  local right_padding=""
+
+  for ((i=0; i<padding; i++)); do left_padding+=" "; done
+  for ((i=0; i<width-padding-${#text}; i++)); do right_padding+=" "; done
+
+  echo -e "${color}╔════════════════════════════════════════════╗${RESET}"
+  echo -e "${color}║${left_padding}${text}${right_padding}║${RESET}"
+  echo -e "${color}╚════════════════════════════════════════════╝${RESET}"
+}
+
 print_banner() {
   local title="$1"
   local color="$2"
@@ -41,13 +57,17 @@ print_banner() {
 print_menu() {
   clear
   echo
-  print_banner "Deutsch-Lernprogramm" "$MAGENTA"
-  echo -e "${CYAN}Wähle einen Modus:${RESET}"
+  print_header "Deutsch-Lernprogramm" "$MAGENTA"
   echo
-  echo -e "${GREEN}1.${RESET} Satz übersetzen"
-  echo -e "${GREEN}2.${RESET} Trennbare Verben lernen"
-  echo -e "${GREEN}3.${RESET} Untrennbare Verben lernen"
-  echo -e "${GREEN}4.${RESET} Beenden"
+  echo -e "${CYAN}┌ Wähle einen Modus: ${RESET}"
+  echo -e "${CYAN}├─────────────────────────────────────────────${RESET}"
+  echo -e "${CYAN}│${RESET}"
+  echo -e "${CYAN}│  ${GREEN}1${RESET}  Satz übersetzen"
+  echo -e "${CYAN}│  ${GREEN}2${RESET}  Trennbare Verben lernen"
+  echo -e "${CYAN}│  ${GREEN}3${RESET}  Untrennbare Verben lernen"
+  echo -e "${CYAN}│  ${GREEN}4${RESET}  Beenden"
+  echo -e "${CYAN}│${RESET}"
+  echo -e "${CYAN}└─────────────────────────────────────────────${RESET}"
   echo
 }
 
@@ -74,13 +94,22 @@ show_sentence_mode() {
     fi
 
     clear
-    print_banner "Übersetzungsübung" "$BLUE"
-    echo -e "${CYAN}Drücke t = deutsche Übersetzung anzeigen${RESET}"
-    echo -e "${CYAN}Drücke n = nächsten englischen Satz${RESET}"
-    echo -e "${CYAN}Drücke m = Hauptmenü${RESET}"
-    echo -e "${CYAN}Drücke Strg+C = beenden${RESET}"
+    print_header "Übersetzungsübung" "$BLUE"
     echo
-    printf "${YELLOW}🇬🇧  %s${RESET}\n\n" "$english"
+    echo -e "${CYAN}┌ Befehle: ${RESET}"
+    echo -e "${CYAN}├─────────────────────────────────────────────${RESET}"
+    echo -e "${CYAN}│  ${GREEN}t${RESET}  Deutsche Übersetzung anzeigen"
+    echo -e "${CYAN}│  ${GREEN}n${RESET}  Nächsten englischen Satz"
+    echo -e "${CYAN}│  ${GREEN}m${RESET}  Hauptmenü"
+    echo -e "${CYAN}│  ${GREEN}C${RESET}  Beenden (Strg+C)"
+    echo -e "${CYAN}└─────────────────────────────────────────────${RESET}"
+    echo
+    echo -e "${YELLOW}┌─ Englisch ${RESET}"
+    echo -e "${YELLOW}│${RESET}"
+    printf "${YELLOW}│  🇬🇧  %s${RESET}\n" "$english"
+    echo -e "${YELLOW}│${RESET}"
+    echo -e "${YELLOW}└─────────────────────────────────────────────${RESET}"
+    echo
 
     while true; do
       printf 'Befehl [t/n/m]: '
@@ -89,7 +118,13 @@ show_sentence_mode() {
 
       case "$key" in
         t|T)
-          printf "\n${GREEN}🇩🇪  %s${RESET}\n\n" "$german"
+          echo
+          echo -e "${GREEN}┌─ Deutsch ${RESET}"
+          echo -e "${GREEN}│${RESET}"
+          printf "${GREEN}│  🇩🇪  %s${RESET}\n" "$german"
+          echo -e "${GREEN}│${RESET}"
+          echo -e "${GREEN}└─────────────────────────────────────────────${RESET}"
+          echo
           ;;
         n|N)
           break
@@ -98,7 +133,7 @@ show_sentence_mode() {
           return 0
           ;;
         *)
-          echo -e "${RED}Verwende t für Übersetzung, n für nächsten Satz, m für Menü oder Strg+C zum Beenden.${RESET}"
+          echo -e "${RED}✗ Ungültige Eingabe. Nutze t, n oder m.${RESET}"
           ;;
       esac
     done
@@ -124,13 +159,22 @@ run_verb_practice() {
     IFS=$'\t' read -r german english example <<< "$entry"
 
     clear
-    print_banner "Verbtraining: $title" "$YELLOW"
-    echo -e "${CYAN}Drücke b = Bedeutung anzeigen${RESET}"
-    echo -e "${CYAN}Drücke n = nächstes Verb${RESET}"
-    echo -e "${CYAN}Drücke m = Hauptmenü${RESET}"
-    echo -e "${CYAN}Drücke e = beenden${RESET}"
+    print_header "Verbtraining: $title" "$YELLOW"
     echo
-    printf "${GREEN}🇩🇪  %s${RESET}\n\n" "$german"
+    echo -e "${CYAN}┌ Befehle: ${RESET}"
+    echo -e "${CYAN}├─────────────────────────────────────────────${RESET}"
+    echo -e "${CYAN}│  ${GREEN}b${RESET}  Bedeutung anzeigen"
+    echo -e "${CYAN}│  ${GREEN}n${RESET}  Nächstes Verb"
+    echo -e "${CYAN}│  ${GREEN}m${RESET}  Hauptmenü"
+    echo -e "${CYAN}│  ${GREEN}e${RESET}  Beenden"
+    echo -e "${CYAN}└─────────────────────────────────────────────${RESET}"
+    echo
+    echo -e "${GREEN}┌─ Verb ${RESET}"
+    echo -e "${GREEN}│${RESET}"
+    printf "${GREEN}│  🇩🇪  %s${RESET}\n" "$german"
+    echo -e "${GREEN}│${RESET}"
+    echo -e "${GREEN}└─────────────────────────────────────────────${RESET}"
+    echo
 
     while true; do
       printf 'Befehl [b/n/m/e]: '
@@ -140,9 +184,13 @@ run_verb_practice() {
       case "$key" in
         b|B)
           echo
-          echo -e "${GREEN}Bedeutung: $english${RESET}"
+          echo -e "${CYAN}┌─ Bedeutung ${RESET}"
+          echo -e "${CYAN}│  $english${RESET}"
+          echo -e "${CYAN}└─────────────────────────────────────────────${RESET}"
           echo
-          echo "Beispiel: $example"
+          echo -e "${MAGENTA}┌─ Beispiel ${RESET}"
+          echo -e "${MAGENTA}│  $example${RESET}"
+          echo -e "${MAGENTA}└─────────────────────────────────────────────${RESET}"
           echo
           continue
           ;;
@@ -156,7 +204,7 @@ run_verb_practice() {
           exit 0
           ;;
         *)
-          echo -e "${RED}Verwende b für die Bedeutung, n für das nächste Verb, m für das Hauptmenü oder e zum Beenden.${RESET}"
+          echo -e "${RED}✗ Ungültige Eingabe. Nutze b, n, m oder e.${RESET}"
           ;;
       esac
     done
@@ -180,7 +228,9 @@ while true; do
       run_verb_practice "inseparable"
       ;;
     4|q|Q)
-      echo -e "${MAGENTA}Auf Wiedersehen!${RESET}"
+      clear
+      print_header "Auf Wiedersehen!" "$MAGENTA"
+      echo
       exit 0
       ;;
     *)
