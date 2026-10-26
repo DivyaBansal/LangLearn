@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deutsch-Lernprogramm</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Deutsch-Lernprogramm</h1>
+      <p class="subtitle">German Language Practice</p>
+    </header>
+
+    <main id="main-content">
+      <!-- Menu view -->
+      <section id="menu-view" class="view active">
+        <h2>Wähle einen Modus</h2>
+        <div class="menu-grid">
+          <button class="menu-btn mode-sentences" data-mode="sentences">
+            <span class="icon">📝</span>
+            <span class="label">Satz übersetzen</span>
+          </button>
+          <button class="menu-btn mode-separable" data-mode="separable">
+            <span class="icon">🔀</span>
+            <span class="label">Trennbare Verben</span>
+          </button>
+          <button class="menu-btn mode-inseparable" data-mode="inseparable">
+            <span class="icon">🔗</span>
+            <span class="label">Untrennbare Verben</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Sentence practice view -->
+      <section id="sentences-view" class="view">
+        <div class="card">
+          <div class="card-header">
+            <h2>Übersetzungsübung</h2>
+            <button class="back-btn" data-back="menu">← Zurück zum Menü</button>
+          </div>
+          <div class="sentence-display">
+            <div class="language-label english">English</div>
+            <p id="sentence-english" class="sentence-text">Loading...</p>
+            <div class="translation-toggle">
+              <button id="show-translation-btn" class="action-btn">
+                🇩🇪 Translation anzeigen
+              </button>
+            </div>
+            <div id="translation-container" class="translation-container hidden">
+              <div class="language-label german">Deutsch</div>
+              <p id="sentence-german" class="sentence-text german">
+                <span class="translation-text">Click the button above</span>
+              </p>
+            </div>
+          </div>
+          <div class="nav-buttons">
+            <button id="next-sentence-btn" class="nav-btn">Nächster Satz →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Verb practice view -->
+      <section id="verb-view" class="view">
+        <div class="card">
+          <div class="card-header">
+            <h2 id="verb-title">Verbtraining</h2>
+            <button class="back-btn" data-back="menu">← Zurück zum Menü</button>
+          </div>
+          <div class="verb-display">
+            <div class="language-label german">Deutsch</div>
+            <p id="verb-german" class="verb-text">Loading...</p>
+            <div class="meaning-toggle">
+              <button id="show-meaning-btn" class="action-btn">
+                📖 Bedeutung anzeigen
+              </button>
+            </div>
+            <div id="meaning-container" class="meaning-container hidden">
+              <div class="language-label english">English</div>
+              <p id="verb-meaning" class="verb-text english">
+                <span class="meaning-text">Click the button above</span>
+              </p>
+              <div class="example-container">
+                <div class="language-label german">Beispiel</div>
+                <p id="verb-example" class="example-text"></p>
+              </div>
+            </div>
+          </div>
+          <div class="nav-buttons">
+            <button id="next-verb-btn" class="nav-btn">Nächstes Verb →</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Drücke ESC für das Hauptmenü | Verwende Pfeiltaste ↑↓ für Navigation</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
