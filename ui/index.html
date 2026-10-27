@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deutsch-Lernprogramm</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="app">
+  <header class="app-header">
+    <h1>Deutsch-Lernprogramm</h1>
+    <p class="subtitle">Minimale Web-Oberfläche für die Terminal-App</p>
+  </header>
+
+  <nav id="menu" class="menu" aria-label="Modus wählen">
+    <button class="menu-btn" data-mode="sentence">Satz übersetzen</button>
+    <button class="menu-btn" data-mode="separable">Trennbare Verben lernen</button>
+    <button class="menu-btn" data-mode="inseparable">Untrennbare Verben lernen</button>
+  </nav>
+
+  <section id="practice" class="practice" hidden>
+    <button id="backBtn" class="back-btn">&larr; Hauptmenü</button>
+    <h2 id="practiceTitle"></h2>
+
+    <div class="card">
+      <p id="promptText" class="prompt"></p>
+      <div id="revealBox" class="reveal" hidden>
+        <p id="revealText"></p>
+        <p id="exampleText" class="example"></p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="revealBtn"></button>
+      <button id="nextBtn">Nächstes</button>
+    </div>
+
+    <p id="statusText" class="status" role="status"></p>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
