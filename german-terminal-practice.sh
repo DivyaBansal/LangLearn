@@ -15,6 +15,7 @@ CORPUS="${GERMAN_PRACTICE_CORPUS:-$DATA_DIR/sentences.tsv}"
 
 SEPARABLE_VERB_FILE="${GERMAN_PRACTICE_SEPARABLE_VERBS:-$DATA_DIR/separable-verbs.tsv}"
 INSEPARABLE_VERB_FILE="${GERMAN_PRACTICE_INSEPARABLE_VERBS:-$DATA_DIR/inseparable-verbs.tsv}"
+ADJECTIVES_FILE="${GERMAN_PRACTICE_ADJECTIVES:-$DATA_DIR/adjectives.tsv}"
 
 if [[ ! -s "$SEPARABLE_VERB_FILE" ]]; then
   echo "Verb file not found or empty: $SEPARABLE_VERB_FILE"
@@ -26,8 +27,14 @@ if [[ ! -s "$INSEPARABLE_VERB_FILE" ]]; then
   exit 1
 fi
 
+if [[ ! -s "$ADJECTIVES_FILE" ]]; then
+  echo "Adjectives file not found or empty: $ADJECTIVES_FILE"
+  exit 1
+fi
+
 mapfile -t SEPARABLE_VERBS < <(grep -vE '^(#|$)' "$SEPARABLE_VERB_FILE")
 mapfile -t INSEPARABLE_VERBS < <(grep -vE '^(#|$)' "$INSEPARABLE_VERB_FILE")
+mapfile -t ADJECTIVES < <(grep -vE '^(#|$)' "$ADJECTIVES_FILE")
 
 print_banner() {
   local title="$1"
@@ -47,7 +54,8 @@ print_menu() {
   echo -e "${GREEN}1.${RESET} Satz übersetzen"
   echo -e "${GREEN}2.${RESET} Trennbare Verben lernen"
   echo -e "${GREEN}3.${RESET} Untrennbare Verben lernen"
-  echo -e "${GREEN}4.${RESET} Beenden"
+  echo -e "${GREEN}4.${RESET} Adjektive lernen"
+  echo -e "${GREEN}5.${RESET} Beenden"
   echo
 }
 
@@ -163,9 +171,53 @@ run_verb_practice() {
   done
 }
 
+run_adjectives_practice() {
+  while true; do
+    local index=$((RANDOM % ${#ADJECTIVES[@]}))
+    local entry="${ADJECTIVES[$index]}"
+    IFS=$'\t' read -r german english <<< "$entry"
+
+    clear
+    print_banner "Adjektivtraining" "$CYAN"
+    echo -e "${CYAN}Drücke ü = Übersetzung anzeigen${RESET}"
+    echo -e "${CYAN}Drücke n = nächstes Adjektiv${RESET}"
+    echo -e "${CYAN}Drücke m = Hauptmenü${RESET}"
+    echo -e "${CYAN}Drücke e = beenden${RESET}"
+    echo
+    printf "${GREEN}🇩🇪  %s${RESET}\n\n" "$german"
+
+    while true; do
+      printf 'Befehl [ü/n/m/e]: '
+      IFS= read -rsn1 key
+      printf '%s\n' "$key"
+
+      case "$key" in
+        ü|Ü)
+          echo
+          echo -e "${GREEN}Übersetzung: $english${RESET}"
+          echo
+          continue
+          ;;
+        n|N)
+          break
+          ;;
+        m|M)
+          return 0
+          ;;
+        e|E)
+          exit 0
+          ;;
+        *)
+          echo -e "${RED}Verwende ü für Übersetzung, n für das nächste Adjektiv, m für das Hauptmenü oder e zum Beenden.${RESET}"
+          ;;
+      esac
+    done
+  done
+}
+
 while true; do
   print_menu
-  printf 'Wähle eine Option [1-4]: '
+  printf 'Wähle eine Option [1-5]: '
   IFS= read -r choice
   echo
 
@@ -179,12 +231,15 @@ while true; do
     3)
       run_verb_practice "inseparable"
       ;;
-    4|q|Q)
+    4)
+      run_adjectives_practice
+      ;;
+    5|q|Q)
       echo -e "${MAGENTA}Auf Wiedersehen!${RESET}"
       exit 0
       ;;
     *)
-      echo -e "${RED}Ungültige Auswahl. Bitte wähle 1, 2, 3 oder 4.${RESET}"
+      echo -e "${RED}Ungültige Auswahl. Bitte wähle 1, 2, 3, 4 oder 5.${RESET}"
       echo
       ;;
   esac
